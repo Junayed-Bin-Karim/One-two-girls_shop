@@ -6,23 +6,23 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Floral Summer Dress",
             category: "clothing",
             price: 1200,
-            image: "images/product1.jpg",
+            image: "images/Products/Clothing/florasummerdress1.jpeg",
             description: "Beautiful floral print summer dress with comfortable fit."
         },
         {
             id: 2,
             title: "Designer Handbag",
             category: "accessories",
-            price: 1800,
-            image: "images/product2.jpg",
+            price: 1000,
+            image: "images/Products/Accessories/handbag1.jpeg",
             description: "Stylish handbag with multiple compartments and durable material."
         },
         {
             id: 3,
             title: "Custom Name Necklace",
             category: "custom",
-            price: 1500,
-            image: "images/product3.jpg",
+            price: 500,
+            image: "images/Products/Accessories/earrings1.jpeg",
             description: "Personalized necklace with your name in elegant script."
         },
         {
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Pearl Earrings",
             category: "accessories",
             price: 800,
-            image: "images/product5.jpg",
+            image:  "images/Products/Accessories/earrings1.jpeg",
             description: "Elegant pearl earrings perfect for any occasion."
         },
         {
@@ -465,4 +465,62 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize the page
     displayProducts();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+checkoutForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const orderData = {
+        customer: {
+            name: document.getElementById('fullName').value,
+            phone: document.getElementById('checkoutPhone').value,
+            email: document.getElementById('checkoutEmail').value,
+            address: document.getElementById('deliveryAddress').value
+        },
+        payment: {
+            method: paymentMethod.value,
+            account: document.getElementById('mobileAccount')?.value || null,
+            transactionId: document.getElementById('transactionId')?.value || null
+        },
+        items: cart,
+        total: cart.reduce((total, item) => total + (item.price * item.quantity), 0)
+    };
+    
+    try {
+        const response = await fetch('https://script.google.com/macros/s/AKfycby1UBUOlEnWDDglIqQOEwRCrj2U7MlNRfgdlvY5Y1PfvGv4Lgy7aXgk8Bcvh9NpINKzDA/exec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderData)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            checkoutModal.style.display = 'none';
+            confirmationModal.style.display = 'block';
+            cart = [];
+            updateCart();
+            checkoutForm.reset();
+            mobilePaymentDetails.style.display = 'none';
+        } else {
+            alert('Error: ' + result.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to save order. Please try again or contact us.');
+    }
 });
