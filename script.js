@@ -1,64 +1,69 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Sample product data for Handbags and Jewelry only
+    // Sample product data
     const products = [
-        // Handbags
         {
             id: 1,
-            title: "Designer Leather Handbag",
-            category: "handbag",
-            price: 2500,
-            image: "images/handbag1.jpg",
-            description: "Premium quality leather handbag with multiple compartments"
+            title: "Floral Summer Dress",
+            category: "clothing",
+            price: 1200,
+            image: "images/Products/Clothing/florasummerdress1.jpeg",
+            description: "Beautiful floral print summer dress with comfortable fit."
         },
         {
             id: 2,
-            title: "Evening Clutch Purse",
-            category: "handbag",
-            price: 1800,
-            image: "images/handbag2.jpg",
-            description: "Elegant clutch for special occasions"
+            title: "Designer Handbag",
+            category: "accessories",
+            price: 1000,
+            image: "images/Products/Accessories/handbag1.jpeg",
+            description: "Stylish handbag with multiple compartments and durable material."
         },
         {
             id: 3,
-            title: "Casual Canvas Tote",
-            category: "handbag",
-            price: 1200,
-            image: "images/handbag3.jpg",
-            description: "Spacious tote bag for everyday use"
+            title: "Custom Name Necklace",
+            category: "custom",
+            price: 500,
+            image: "images/Products/Accessories/earrings1.jpeg",
+            description: "Personalized necklace with your name in elegant script."
         },
-        
-        // Jewelry
         {
             id: 4,
-            title: "Silver Pearl Necklace",
-            category: "jewelry",
-            price: 3500,
-            image: "images/jewelry1.jpg",
-            description: "Elegant silver necklace with pearl accents"
+            title: "Denim Jacket",
+            category: "clothing",
+            price: 2000,
+            image: "images/product4.jpg",
+            description: "Classic denim jacket with modern fit and comfortable wear."
         },
         {
             id: 5,
-            title: "Gold Plated Bracelet",
-            category: "jewelry",
-            price: 2800,
-            image: "images/jewelry2.jpg",
-            description: "Beautiful gold plated bracelet"
+            title: "Pearl Earrings",
+            category: "accessories",
+            price: 800,
+            image:  "images/Products/Accessories/earrings1.jpeg",
+            description: "Elegant pearl earrings perfect for any occasion."
         },
         {
             id: 6,
-            title: "Diamond Stud Earrings",
-            category: "jewelry",
-            price: 4200,
-            image: "images/jewelry3.jpg",
-            description: "Classic diamond stud earrings"
+            title: "Custom Printed T-Shirt",
+            category: "custom",
+            price: 900,
+            image: "images/product6.jpg",
+            description: "T-shirt with your custom design or text printed on it."
         },
         {
             id: 7,
-            title: "Gemstone Ring",
-            category: "jewelry",
-            price: 3200,
-            image: "images/jewelry4.jpg",
-            description: "Handcrafted gemstone ring"
+            title: "Silk Scarf",
+            category: "accessories",
+            price: 750,
+            image: "images/product7.jpg",
+            description: "Luxurious silk scarf with vibrant patterns."
+        },
+        {
+            id: 8,
+            title: "Embroidered Skirt",
+            category: "clothing",
+            price: 1600,
+            image: "images/product8.jpg",
+            description: "Hand-embroidered skirt with traditional designs."
         }
     ];
 
@@ -66,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let cart = [];
 
     // DOM Elements
-    const handbagsContainer = document.getElementById('handbagsContainer');
-    const jewelryContainer = document.getElementById('jewelryContainer');
+    const productContainer = document.getElementById('productContainer');
+    const filterButtons = document.querySelectorAll('.filter-btn');
     const cartIcon = document.querySelector('.cart-icon');
     const cartModal = document.getElementById('cartModal');
     const closeCart = document.querySelector('.close-cart');
@@ -91,12 +96,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     const newsletterForm = document.getElementById('newsletterForm');
 
-    // Display products by category
-    function displayProducts() {
-        handbagsContainer.innerHTML = '';
-        jewelryContainer.innerHTML = '';
+    // Display products
+    function displayProducts(filter = 'all') {
+        productContainer.innerHTML = '';
         
-        products.forEach(product => {
+        const filteredProducts = filter === 'all' 
+            ? products 
+            : products.filter(product => product.category === filter);
+        
+        filteredProducts.forEach(product => {
             const productCard = document.createElement('div');
             productCard.className = 'product-card';
             productCard.innerHTML = `
@@ -113,13 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
             `;
-            
-            // Add to appropriate container based on category
-            if (product.category === 'handbag') {
-                handbagsContainer.appendChild(productCard);
-            } else if (product.category === 'jewelry') {
-                jewelryContainer.appendChild(productCard);
-            }
+            productContainer.appendChild(productCard);
         });
 
         // Add event listeners to "Add to Cart" buttons
@@ -128,7 +130,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add to cart function
+    // Filter products
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            // Filter products
+            displayProducts(this.dataset.filter);
+        });
+    });
+
+    // Add to cart
     function addToCart(e) {
         const productId = parseInt(e.target.dataset.id);
         const product = products.find(p => p.id === productId);
@@ -149,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showCartNotification();
     }
 
-    // Update cart function
+    // Update cart
     function updateCart() {
         // Update cart count
         const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
@@ -203,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Update quantity function
+    // Update quantity
     function updateQuantity(e) {
         const productId = parseInt(e.target.dataset.id);
         const item = cart.find(item => item.id === productId);
@@ -228,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCart();
     }
 
-    // Remove item function
+    // Remove item
     function removeItem(e) {
         const productId = parseInt(e.target.dataset.id);
         cart = cart.filter(item => item.id !== productId);
@@ -322,9 +336,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Place order
-    checkoutForm.addEventListener('submit', async function(e) {
+    checkoutForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
+        // In a real app, you would send this data to your server
         const orderData = {
             customer: {
                 name: document.getElementById('fullName').value,
@@ -341,36 +356,19 @@ document.addEventListener('DOMContentLoaded', function() {
             total: cart.reduce((total, item) => total + (item.price * item.quantity), 0)
         };
         
-        try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycby1UBUOlEnWDDglIqQOEwRCrj2U7MlNRfgdlvY5Y1PfvGv4Lgy7aXgk8Bcvh9NpINKzDA/exec', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(orderData)
-            });
-            
-            const result = await response.json();
-            
-            if (result.success) {
-                // Show confirmation
-                checkoutModal.style.display = 'none';
-                confirmationModal.style.display = 'block';
-                
-                // Clear cart
-                cart = [];
-                updateCart();
-                
-                // Reset form
-                checkoutForm.reset();
-                mobilePaymentDetails.style.display = 'none';
-            } else {
-                alert('Error saving order: ' + result.message);
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Failed to save order. Please try again or contact us.');
-        }
+        console.log('Order placed:', orderData);
+        
+        // Show confirmation
+        checkoutModal.style.display = 'none';
+        confirmationModal.style.display = 'block';
+        
+        // Clear cart
+        cart = [];
+        updateCart();
+        
+        // Reset form
+        checkoutForm.reset();
+        mobilePaymentDetails.style.display = 'none';
     });
 
     // Continue shopping
@@ -392,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const customOrder = {
             productType: document.getElementById('productType').value,
-            material: document.getElementById('material').value,
+            size: document.getElementById('size').value,
             color: document.getElementById('color').value,
             designDescription: document.getElementById('designDescription').value,
             image: document.getElementById('customImage').files[0] || null
@@ -467,9 +465,62 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize the page
     displayProducts();
-}); 
+});
 
 
 
 
- 
+
+
+
+
+
+
+
+
+
+checkoutForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const orderData = {
+        customer: {
+            name: document.getElementById('fullName').value,
+            phone: document.getElementById('checkoutPhone').value,
+            email: document.getElementById('checkoutEmail').value,
+            address: document.getElementById('deliveryAddress').value
+        },
+        payment: {
+            method: paymentMethod.value,
+            account: document.getElementById('mobileAccount')?.value || null,
+            transactionId: document.getElementById('transactionId')?.value || null
+        },
+        items: cart,
+        total: cart.reduce((total, item) => total + (item.price * item.quantity), 0)
+    };
+    
+    try {
+        const response = await fetch('https://script.google.com/macros/s/AKfycby1UBUOlEnWDDglIqQOEwRCrj2U7MlNRfgdlvY5Y1PfvGv4Lgy7aXgk8Bcvh9NpINKzDA/exec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderData)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            checkoutModal.style.display = 'none';
+            confirmationModal.style.display = 'block';
+            cart = [];
+            updateCart();
+            checkoutForm.reset();
+            mobilePaymentDetails.style.display = 'none';
+        } else {
+            alert('Error: ' + result.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to save order. Please try again or contact us.');
+    }
+});
