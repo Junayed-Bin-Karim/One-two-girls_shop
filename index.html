@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-Two Girls Shop - Fashion for Girls</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> 01832-976587</span>
+                <span><i class="fas fa-envelope"></i> rabeyakhatuntitthy@gmail.com</span>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.jpeg" alt="One-Two Girls Shop Logo">
+                <h1>One-Two Girls Shop</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#customize">Customize</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Unique & Best Fashion for You</h2>
+                <p>Customize your choice on any product. We create what you actually want.</p>
+                <a href="#products" class="btn">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2>Our Products</h2>
+            <div class="product-filters">
+                <button class="filter-btn active" data-filter="all">All Items</button>
+                <button class="filter-btn" data-filter="clothing">Clothing</button>
+                <button class="filter-btn" data-filter="accessories">Accessories</button>
+                <button class="filter-btn" data-filter="custom">Custom</button>
+            </div>
+            <div class="product-grid" id="productContainer">
+                <!-- Products will be loaded via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Customize Section -->
+    <section class="customize" id="customize">
+        <div class="container">
+            <h2>Customize Your Product</h2>
+            <div class="customize-form">
+                <form id="customOrderForm">
+                    <div class="form-group">
+                        <label for="productType">Product Type:</label>
+                        <select id="productType" required>
+                            <option value="">Select Product</option>
+                            <option value="dress">Dress</option>
+                            <option value="top">Top</option>
+                            <option value="skirt">Skirt</option>
+                            <option value="bag">Bag</option>
+                            <option value="jewelry">Jewelry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="size">Size:</label>
+                        <select id="size" required>
+                            <option value="">Select Size</option>
+                            <option value="S">Small (S)</option>
+                            <option value="M">Medium (M)</option>
+                            <option value="L">Large (L)</option>
+                            <option value="XL">Extra Large (XL)</option>
+                            <option value="custom">Custom Measurements</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="color">Color:</label>
+                        <input type="color" id="color" value="#ff0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="designDescription">Design Description:</label>
+                        <textarea id="designDescription" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="customImage">Upload Design Image (optional):</label>
+                        <input type="file" id="customImage" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn">Request Custom Order</button>
+                </form>
+                <div class="customize-preview">
+                    <div class="preview-image">
+                        <img src="images/Products/Accessories/ear rings.jpeg" alt="Custom Product Preview" id="customPreview">
+                    </div>
+                    <div class="preview-details">
+                        <h3>Your Custom Design</h3>
+                        <p id="previewText">Describe your design to see a preview</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>About One-Two Girls Shop</h2>
+                <p>Welcome to One-Two Girls Shop, your premier destination for unique and customized girls' fashion in Dinajpur, Bangladesh.</p>
+                <p>We specialize in creating products that people actually want, with the option to customize any product to your specific preferences.</p>
+                <p>Our shop is always open to serve you with the latest trends and timeless classics in girls' fashion.</p>
+                <div class="about-features">
+                    <div class="feature">
+                        <i class="fas fa-tshirt"></i>
+                        <h3>Quality Products</h3>
+                        <p>We use only the best materials for our products.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Customization</h3>
+                        <p>Tailor any product to your exact specifications.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-headset"></i>
+                        <h3>Customer Support</h3>
+                        <p>We're here to help with any questions or concerns.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="images/One-two -girls shop.jpg" alt="One-Two Girls Shop Interior">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Dinajpur, Bangladesh</p>
+                    <p><i class="fas fa-phone"></i> 01832-976587, +880 1953-898471</p>
+                    <p><i class="fas fa-envelope"></i> rabeyakhatuntitthy@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Always Open</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Your Shopping Cart</h3>
+                <span class="close-cart">&times;</span>
+            </div>
+            <div class="cart-body" id="cartItems">
+                <!-- Cart items will be loaded here -->
+                <p class="empty-cart">Your cart is empty</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">৳0.00</span>
+                </div>
+                <button class="btn checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-content">
+            <div class="checkout-header">
+                <h3>Checkout</h3>
+                <span class="close-checkout">&times;</span>
+            </div>
+            <div class="checkout-body">
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkoutPhone">Phone Number</label>
+                        <input type="tel" id="checkoutPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkoutEmail">Email (optional)</label>
+                        <input type="email" id="checkoutEmail">
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryAddress">Delivery Address</label>
+                        <textarea id="deliveryAddress" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="paymentMethod">Payment Method</label>
+                        <select id="paymentMethod" required>
+                            <option value="">Select Payment Method</option>
+                            <option value="cash">Cash on Delivery</option>
+                            <option value="bkash">bKash</option>
+                            <option value="nagad">Nagad</option>
+                            <option value="rocket">Rocket</option>
+                        </select>
+                    </div>
+                    <div class="form-group payment-details" id="mobilePaymentDetails" style="display: none;">
+                        <label for="mobileAccount">Mobile Account Number</label>
+                        <input type="text" id="mobileAccount">
+                        <label for="transactionId">Transaction ID</label>
+                        <input type="text" id="transactionId">
+                    </div>
+                    <div class="order-summary">
+                        <h4>Order Summary</h4>
+                        <div id="checkoutOrderSummary">
+                            <!-- Order items will be loaded here -->
+                        </div>
+                        <div class="order-total">
+                            <span>Total:</span>
+                            <span id="checkoutTotal">৳0.00</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="confirmation-modal" id="confirmationModal">
+        <div class="confirmation-content">
+            <div class="confirmation-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Order Placed Successfully!</h3>
+            <p id="confirmationMessage">Thank you for your order. We'll contact you shortly to confirm the details.</p>
+            <button class="btn" id="continueShoppingBtn">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>One-Two Girls Shop</h3>
+                    <p>Your destination for unique and customized girls' fashion in Dinajpur, Bangladesh.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#customize">Customize</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Dinajpur, Bangladesh</p>
+                    <p><i class="fas fa-phone"></i> 01832-976587</p>
+                    <p><i class="fas fa-phone"></i> +880 1953-898471</p>
+                    <p><i class="fas fa-envelope"></i> rabeyakhatuntitthy@gmail.com</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get updates on new products and offers.</p>
+                    <form id="newsletterForm">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 One-Two Girls Shop. All Rights Reserved.
+                    Develop By Junayed_Bin_Karim
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
