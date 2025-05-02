@@ -468,3 +468,49 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize the page
     displayProducts();
 }); 
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+    
+    mobileMenuBtn.addEventListener('click', function() {
+      this.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      mobileMenuOverlay.classList.toggle('active');
+      document.body.classList.toggle('no-scroll');
+    });
+    
+    mobileMenuClose.addEventListener('click', function() {
+      mobileMenuBtn.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      mobileMenuOverlay.classList.remove('active');
+      document.body.classList.remove('no-scroll');
+    });
+    
+    mobileMenuOverlay.addEventListener('click', function() {
+      mobileMenuBtn.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      this.classList.remove('active');
+      document.body.classList.remove('no-scroll');
+    });
+    
+    // Add this to your existing CSS
+    const style = document.createElement('style');
+    style.textContent = `
+      .no-scroll {
+        overflow: hidden;
+      }
+    `;
+    document.head.appendChild(style);
+  });
