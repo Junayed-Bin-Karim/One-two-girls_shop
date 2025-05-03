@@ -73,39 +73,7 @@ h2::after {
     margin: 15px auto;
 }
 
-/* Top Bar */
-.top-bar {
-    background-color: var(--dark-color);
-    color: var(--white);
-    padding: 10px 0;
-    font-size: 0.9rem;
-}
-
-.top-bar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.contact-info span {
-    margin-right: 20px;
-}
-
-.contact-info i {
-    margin-right: 5px;
-    color: var(--primary-color);
-}
-
-.social-icons a {
-    color: var(--white);
-    margin-left: 15px;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-.social-icons a:hover {
-    color: var(--primary-color);
-}
+  
 
 /* Header */
 header {
@@ -183,7 +151,7 @@ nav ul li a:hover {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/banner.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/Products/custom\ design.avif') no-repeat center center/cover;
     color: var(--white);
     height: 80vh;
     display: flex;
@@ -834,6 +802,22 @@ footer {
 }
 
 
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Mobile Menu Styles */
 .hamburger-menu {
     display: none;
@@ -943,3 +927,11 @@ footer {
 .right-card {
     justify-self: end;
 }
+
+
+
+
+
+
+
+
