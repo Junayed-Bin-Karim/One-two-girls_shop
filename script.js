@@ -477,67 +477,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
-
-checkoutForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const orderData = {
-        customer: {
-            name: document.getElementById('fullName').value,
-            phone: document.getElementById('checkoutPhone').value,
-            email: document.getElementById('checkoutEmail').value,
-            address: document.getElementById('deliveryAddress').value
-        },
-        payment: {
-            method: paymentMethod.value,
-            account: document.getElementById('mobileAccount')?.value || null,
-            transactionId: document.getElementById('transactionId')?.value || null
-        },
-        items: cart,
-        total: cart.reduce((total, item) => total + (item.price * item.quantity), 0)
-    };
-    
-    try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycby1UBUOlEnWDDglIqQOEwRCrj2U7MlNRfgdlvY5Y1PfvGv4Lgy7aXgk8Bcvh9NpINKzDA/exec', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(orderData)
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
-            checkoutModal.style.display = 'none';
-            confirmationModal.style.display = 'block';
-            cart = [];
-            updateCart();
-            checkoutForm.reset();
-            mobilePaymentDetails.style.display = 'none';
-        } else {
-            alert('Error: ' + result.message);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Failed to save order. Please try again or contact us.');
-    }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
   // Hamburger Menu Functionality
 const hamburger = document.querySelector('.hamburger-menu');
 const nav = document.querySelector('nav');
@@ -682,3 +621,76 @@ function handleSwipe() {
         productContainer.scrollBy({left: -scrollAmount, behavior: 'smooth'});
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+checkoutForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const orderData = {
+        customer: {
+            name: document.getElementById('fullName').value,
+            phone: document.getElementById('checkoutPhone').value,
+            email: document.getElementById('checkoutEmail').value,
+            address: document.getElementById('deliveryAddress').value
+        },
+        payment: {
+            method: paymentMethod.value,
+            account: document.getElementById('mobileAccount')?.value || null,
+            transactionId: document.getElementById('transactionId')?.value || null
+        },
+        items: cart,
+        total: cart.reduce((total, item) => total + (item.price * item.quantity), 0)
+    };
+    
+    try {
+        const response = await fetch('https://script.google.com/macros/s/AKfycby1UBUOlEnWDDglIqQOEwRCrj2U7MlNRfgdlvY5Y1PfvGv4Lgy7aXgk8Bcvh9NpINKzDA/exec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderData)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            checkoutModal.style.display = 'none';
+            confirmationModal.style.display = 'block';
+            cart = [];
+            updateCart();
+            checkoutForm.reset();
+            mobilePaymentDetails.style.display = 'none';
+        } else {
+            alert('Error: ' + result.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to save order. Please try again or contact us.');
+    }
+});
+
+
+
+
+
+
