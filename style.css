@@ -180,6 +180,16 @@ nav ul li a:hover {
         right: -8px;
     }
 }
+
+
+@media (max-width: 768px) {
+    /* Debug: Add a visible change to confirm the media query works */
+    header {
+        background-color: red !important; /* Temporary test */
+    }
+}
+
+
 /* Hero Section */
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/Products/custom\ design.avif') no-repeat center center/cover;
