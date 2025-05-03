@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Handbag",
             category: "Handbag",
     
-            price: 600,
+            price: 1200,
             image:  "images/Products/Handbag/bag4.jpeg",
             description: "Elegant pearl earrings perfect for any occasion."
         },
@@ -663,14 +663,14 @@ checkoutForm.addEventListener('submit', async function(e) {
     };
     
     try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycby1UBUOlEnWDDglIqQOEwRCrj2U7MlNRfgdlvY5Y1PfvGv4Lgy7aXgk8Bcvh9NpINKzDA/exec',
-             {
+        await fetch('https://script.google.com/macros/s/AKfycbwB3qs9xz4cCmYZFk3N9MRGOBtvOTr9kku098yiZ-Yk99AHqZlujniAEhuN6gFs5iB-EA/exec', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+              'Content-Type': 'application/json',
             },
             body: JSON.stringify(orderData)
-        });
+          });
+          
         
         const result = await response.json();
         
@@ -688,6 +688,11 @@ checkoutForm.addEventListener('submit', async function(e) {
         console.error('Error:', error);
         alert('Failed to save order. Please try again or contact us.');
     }
+
+    return ContentService.createTextOutput(JSON.stringify({ success: true }))
+                      .setMimeType(ContentService.MimeType.JSON)
+                      .setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins
+
 });
 
 
