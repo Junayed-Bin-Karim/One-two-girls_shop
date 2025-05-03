@@ -847,8 +847,7 @@ footer {
 
 
 
- 
- 
+  
 /* Button Container inside product card */
 .product-card .buttons {
     display: flex;
@@ -866,6 +865,14 @@ footer {
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    flex: 1;               /* make all buttons take equal space */
+    text-align: center;    /* center text in anchor tag */
+    box-sizing: border-box;
+}
+
+/* Space between buttons (horizontal) */
+.product-card .buttons > *:not(:last-child) {
+    margin-right: 10px;
 }
 
 /* Add to Cart Button */
@@ -895,22 +902,14 @@ footer {
         gap: 8px;
     }
 
+    .product-card .buttons > *:not(:last-child) {
+        margin-right: 0; /* remove margin when stacked */
+    }
+
     .product-card button,
     .product-card a {
         width: 100%;
-        text-align: center;
-        padding: 4px 8px; /* smaller padding */
-        font-size: 12px;   /* smaller font size */
+        padding: 4px 8px;
+        font-size: 12px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
