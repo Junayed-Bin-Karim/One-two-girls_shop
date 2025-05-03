@@ -103,7 +103,7 @@ header .container {
 
 .logo h1 {
     font-size: 1.5rem;
-    color: var(--primary-color);
+    color: white; /* Changed from var(--primary-color) to white */
 }
 
 nav ul {
@@ -163,6 +163,34 @@ header .container {
  
 
  
+
+
+
+
+
+@media (max-width: 768px) {
+    header {
+      height: auto !important;
+      min-height: unset !important;
+    }
+    
+    header .container {
+      padding: 5px 0 !important;
+    }
+    
+    .logo img {
+      height: 30px !important;
+      margin-right: 8px !important;
+    }
+    
+    .logo h1 {
+      font-size: 1rem !important;
+    }
+    
+    nav ul li {
+      margin-left: 10px !important;
+    }
+  }
 
 /* Hero Section */
 .hero {
