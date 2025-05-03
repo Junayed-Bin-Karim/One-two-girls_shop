@@ -149,43 +149,44 @@ nav ul li a:hover {
     font-weight: bold;
 }
 
-/* Mobile styles */
+
+
+/* Default (Desktop) */
+header .container {
+    padding: 15px 0;
+}
+.logo img {
+    height: 50px;
+}
+
+/* Mobile */
 @media (max-width: 768px) {
     header .container {
-        padding: 10px 0; /* Reduce vertical padding */
+        padding: 8px 0; /* Reduced padding */
     }
-    
     .logo img {
-        height: 35px; /* Reduce logo size */
-        margin-right: 10px;
+        height: 36px; /* Smaller logo */
+        margin-right: 8px;
     }
-    
     .logo h1 {
-        font-size: 1.2rem; /* Reduce text size */
-    }
-    
+        font-size: 1.2rem; /* Smaller text */
+        display: none; /* Optional: Hide text on mobile */
+     }
     nav ul li {
-        margin-left: 15px; /* Reduce spacing between menu items */
-    }
-    
-    .cart-icon {
-        font-size: 1.2rem; /* Reduce cart icon size */
-    }
-    
-    .cart-count {
-        width: 16px; /* Reduce cart count bubble size */
-        height: 16px;
-        font-size: 0.6rem;
-        top: -8px;
-        right: -8px;
+        margin-left: 12px; /* Tighter spacing */
     }
 }
 
-
-@media (max-width: 768px) {
-    /* Debug: Add a visible change to confirm the media query works */
-    header {
-        background-color: red !important; /* Temporary test */
+/* Extra Small Screens */
+@media (max-width: 480px) {
+    header .container {
+        padding: 5px 0;
+    }
+    .logo img {
+        height: 30px;
+    }
+    .cart-icon {
+        font-size: 1.2rem;
     }
 }
 
