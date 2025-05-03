@@ -149,6 +149,37 @@ nav ul li a:hover {
     font-weight: bold;
 }
 
+/* Mobile styles */
+@media (max-width: 768px) {
+    header .container {
+        padding: 10px 0; /* Reduce vertical padding */
+    }
+    
+    .logo img {
+        height: 35px; /* Reduce logo size */
+        margin-right: 10px;
+    }
+    
+    .logo h1 {
+        font-size: 1.2rem; /* Reduce text size */
+    }
+    
+    nav ul li {
+        margin-left: 15px; /* Reduce spacing between menu items */
+    }
+    
+    .cart-icon {
+        font-size: 1.2rem; /* Reduce cart icon size */
+    }
+    
+    .cart-count {
+        width: 16px; /* Reduce cart count bubble size */
+        height: 16px;
+        font-size: 0.6rem;
+        top: -8px;
+        right: -8px;
+    }
+}
 /* Hero Section */
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/Products/custom\ design.avif') no-repeat center center/cover;

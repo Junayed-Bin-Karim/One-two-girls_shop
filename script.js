@@ -663,7 +663,8 @@ checkoutForm.addEventListener('submit', async function(e) {
     };
     
     try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycby1UBUOlEnWDDglIqQOEwRCrj2U7MlNRfgdlvY5Y1PfvGv4Lgy7aXgk8Bcvh9NpINKzDA/exec', {
+        const response = await fetch('https://script.google.com/macros/s/AKfycby1UBUOlEnWDDglIqQOEwRCrj2U7MlNRfgdlvY5Y1PfvGv4Lgy7aXgk8Bcvh9NpINKzDA/exec',
+             {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
