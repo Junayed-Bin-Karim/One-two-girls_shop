@@ -845,6 +845,12 @@ footer {
 
 
 
+
+
+
+
+
+
 /* Mobile Menu Styles */
 .hamburger-menu {
     display: none;
@@ -864,12 +870,12 @@ footer {
     transition: all 0.3s ease;
 }
 
-/* Mobile Navigation */
+/* Navigation */
 @media (max-width: 768px) {
     .hamburger-menu {
         display: flex;
     }
-    
+
     nav {
         position: fixed;
         top: 0;
@@ -877,43 +883,41 @@ footer {
         width: 250px;
         height: 100vh;
         background-color: #fff;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
         transition: right 0.3s ease;
         z-index: 1000;
         padding-top: 80px;
     }
-    
+
     nav.active {
         right: 0;
     }
-    
+
     nav ul {
         flex-direction: column;
         padding: 20px;
     }
-    
+
     nav ul li {
         margin: 15px 0;
     }
-    
+
     .container {
         position: relative;
     }
-    
-    /* Close button when menu is open */
+
     .hamburger-menu.active .bar:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
     }
-    
+
     .hamburger-menu.active .bar:nth-child(2) {
         opacity: 0;
     }
-    
+
     .hamburger-menu.active .bar:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
     }
-    
-    /* Dark overlay when menu is open */
+
     .overlay {
         display: none;
         position: fixed;
@@ -921,59 +925,102 @@ footer {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(0, 0, 0, 0.5);
         z-index: 999;
     }
-    
+
     .overlay.active {
         display: block;
-     }
+    }
 }
 
-/* Card Positioning - Left and Right */
+/* Product Grid (Responsive) */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
+    padding: 20px;
 }
 
-/* For alternating card layouts */
+/* Card Styling */
+.product-card {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Optional alternating styling */
 .product-card:nth-child(odd) {
-    /* Styles for left-side cards */
+    background-color: #fdfdfd;
 }
 
 .product-card:nth-child(even) {
-    /* Styles for right-side cards */
+    background-color: #f4f4f4;
+}
+ 
+
+
+
+
+
+
+
+
+
+
+/* Button Container inside product card */
+.product-card .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
-/* Or specific positioning */
-.left-card {
-    justify-self: start;
+/* General Button Styling */
+.product-card button,
+.product-card a {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.right-card {
-    justify-self: end;
+/* Add to Cart Button */
+.product-card .add-to-cart {
+    background-color: #28a745;
+    color: white;
 }
 
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+.product-card .add-to-cart:hover {
+    background-color: #218838;
 }
 
-.product-card:nth-child(odd) {
-    /* Left side styling */
-    margin-right: auto;
+/* Details Button */
+.product-card .details {
+    background-color: #007bff;
+    color: white;
 }
 
-.product-card:nth-child(even) {
-    /* Right side styling */
-    margin-left: auto;
+.product-card .details:hover {
+    background-color: #0056b3;
 }
 
-  
+/* Responsive: Stack buttons on smaller screens */
+@media (max-width: 480px) {
+    .product-card .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
 
-
+    .product-card button,
+    .product-card a {
+        width: 100%;
+        text-align: center;
+    }
+}
 
 
 

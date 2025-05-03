@@ -573,3 +573,112 @@ navLinks.forEach(link => {
 
 
 
+
+
+
+
+
+
+
+// Product Details Modal
+const productModal = document.getElementById('productModal');
+const modalProductImage = document.getElementById('modalProductImage');
+const modalProductTitle = document.getElementById('modalProductTitle');
+const modalProductPrice = document.getElementById('modalProductPrice');
+const modalProductDescription = document.getElementById('modalProductDescription');
+const modalAddToCart = document.getElementById('modalAddToCart');
+const modalCustomize = document.getElementById('modalCustomize');
+const closeModal = document.querySelector('.close-modal');
+
+// Open product details
+function openProductDetails(product) {
+    modalProductImage.src = product.image;
+    modalProductImage.alt = product.name;
+    modalProductTitle.textContent = product.name;
+    modalProductPrice.textContent = `৳${product.price.toFixed(2)}`;
+    modalProductDescription.textContent = product.description || 'No description available';
+    
+    // Set product ID on modal buttons
+    modalAddToCart.dataset.id = product.id;
+    modalCustomize.dataset.id = product.id;
+    
+    productModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Close modal
+closeModal.addEventListener('click', () => {
+    productModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+});
+
+// Close when clicking outside modal
+window.addEventListener('click', (e) => {
+    if (e.target === productModal) {
+        productModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Update product cards to include details button
+function createProductCard(product) {
+    return `
+        <div class="product-card" data-id="${product.id}">
+            <div class="product-image-container">
+                <img src="${product.image}" alt="${product.name}" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">${product.name}</h3>
+                <div class="product-price">৳${product.price.toFixed(2)}</div>
+                <div class="product-actions">
+                    <button class="btn-details">Details</button>
+                    <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Event delegation for details buttons
+document.getElementById('productContainer').addEventListener('click', (e) => {
+    if (e.target.classList.contains('btn-details')) {
+        const productCard = e.target.closest('.product-card');
+        const productId = productCard.dataset.id;
+        const product = products.find(p => p.id == productId);
+        openProductDetails(product);
+    }
+});
+
+
+
+
+
+
+
+
+// Mobile swipe functionality
+let touchStartX = 0;
+let touchEndX = 0;
+const productContainer = document.getElementById('productContainer');
+
+productContainer.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, {passive: true});
+
+productContainer.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, {passive: true});
+
+function handleSwipe() {
+    if (touchEndX < touchStartX - 50) {
+        // Swipe left
+        const scrollAmount = window.innerWidth * 0.8;
+        productContainer.scrollBy({left: scrollAmount, behavior: 'smooth'});
+    }
+    if (touchEndX > touchStartX + 50) {
+        // Swipe right
+        const scrollAmount = window.innerWidth * 0.8;
+        productContainer.scrollBy({left: -scrollAmount, behavior: 'smooth'});
+    }
+}
