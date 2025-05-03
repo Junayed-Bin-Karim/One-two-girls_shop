@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 1,
             title: "Handbag",
             category: "Handbag",
-            price: 350,
+            price: 500,
             image: "images/Products/Handbag/bag2.jpeg",
             description: "Beautiful floral print summer dress with comfortable fit."
         },
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 2,
             title: "Ear Rings",
             category: "Jewelry",
-            price: 500,
+            price: 300,
             image: "images/Products/Jewelry/earrings1.jpeg",
             description: "Stylish handbag with multiple compartments and durable material."
         },
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 3,
             title: "Handbag",
             category: "custom",
-            price: 450,
+            price: 650,
             image: "images/Products/Handbag/handbag1.jpeg",
             description: "Personalized necklace with your name in elegant script."
         },
