@@ -864,7 +864,7 @@ footer {
         right: -100%;
         width: 250px;
         height: 100vh;
-        background-color: #fff;
+        background-color: #df2b79;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
         transition: right 0.3s ease;
         z-index: 1000;
