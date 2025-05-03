@@ -524,3 +524,38 @@ checkoutForm.addEventListener('submit', async function(e) {
         alert('Failed to save order. Please try again or contact us.');
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Mobile menu functionality
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.add('active');
+    mobileMenuOverlay.classList.add('active');
+});
+
+closeMobileMenu.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    mobileMenuOverlay.classList.remove('active');
+});
+
+mobileMenuOverlay.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    mobileMenuOverlay.classList.remove('active');
+});
+
+
