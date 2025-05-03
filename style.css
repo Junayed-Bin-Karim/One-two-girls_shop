@@ -78,7 +78,7 @@ h2::after {
 /* Header */
 header {
     background-color: var(--white);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(255, 254, 254, 0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -149,47 +149,20 @@ nav ul li a:hover {
     font-weight: bold;
 }
 
+    header {
+        background-color: rgba(234, 14, 175, 0.451) !important; /* Temporary test */
+    }
 
-
-/* Default (Desktop) */
+ 
 header .container {
-    padding: 15px 0;
+    padding: clamp(5px, 2vw, 15px) 0; /* Min: 5px, Default: 2vw, Max: 15px */
 }
 .logo img {
-    height: 50px;
+    height: clamp(30px, 8vw, 50px); /* Adapts to viewport width */
 }
+ 
 
-/* Mobile */
-@media (max-width: 768px) {
-    header .container {
-        padding: 8px 0; /* Reduced padding */
-    }
-    .logo img {
-        height: 36px; /* Smaller logo */
-        margin-right: 8px;
-    }
-    .logo h1 {
-        font-size: 1.2rem; /* Smaller text */
-        display: none; /* Optional: Hide text on mobile */
-     }
-    nav ul li {
-        margin-left: 12px; /* Tighter spacing */
-    }
-}
-
-/* Extra Small Screens */
-@media (max-width: 480px) {
-    header .container {
-        padding: 5px 0;
-    }
-    .logo img {
-        height: 30px;
-    }
-    .cart-icon {
-        font-size: 1.2rem;
-    }
-}
-
+ 
 
 /* Hero Section */
 .hero {
