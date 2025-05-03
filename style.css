@@ -880,7 +880,7 @@ footer {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 100px;
+        width: 180px;
         height: 100vh;
         background-color: #953961;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
