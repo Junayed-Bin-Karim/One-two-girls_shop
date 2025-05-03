@@ -537,25 +537,33 @@ checkoutForm.addEventListener('submit', async function(e) {
 
 
 
-// Mobile menu functionality
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-const closeMobileMenu = document.getElementById('closeMobileMenu');
+  // Hamburger Menu Functionality
+const hamburger = document.querySelector('.hamburger-menu');
+const nav = document.querySelector('nav');
+const overlay = document.createElement('div');
+overlay.className = 'overlay';
+document.body.appendChild(overlay);
 
-mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.add('active');
-    mobileMenuOverlay.classList.add('active');
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('active');
+    overlay.classList.toggle('active');
 });
 
-closeMobileMenu.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-    mobileMenuOverlay.classList.remove('active');
+overlay.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    nav.classList.remove('active');
+    overlay.classList.remove('active');
 });
 
-mobileMenuOverlay.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-    mobileMenuOverlay.classList.remove('active');
+// Close menu when clicking on nav links
+const navLinks = document.querySelectorAll('nav ul li a');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+    });
 });
 
 
