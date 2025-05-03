@@ -1028,6 +1028,18 @@ footer {
 
 
 
+/* ✅ Mobile View: Stack buttons vertically */
+@media (max-width: 768px) {
+    .product-card .buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .product-card button,
+    .product-card a {
+        width: 100%;
+    }
+}
 
 
 
