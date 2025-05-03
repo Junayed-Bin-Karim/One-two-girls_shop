@@ -694,4 +694,16 @@ checkoutForm.addEventListener('submit', async function(e) {
 
 
 
+// Toggle mobile menu
+document.querySelector('.hamburger-menu').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.mobile-nav').classList.toggle('active');
+});
 
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.mobile-nav a').forEach(link => {
+    link.addEventListener('click', function() {
+        document.querySelector('.hamburger-menu').classList.remove('active');
+        document.querySelector('.mobile-nav').classList.remove('active');
+    });
+});

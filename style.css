@@ -149,87 +149,44 @@ nav ul li a:hover {
     font-weight: bold;
 }
 
-    header {
-        background-color: rgba(234, 14, 175, 0.451) !important; /* Temporary test */
-    }
-
- 
-header .container {
-    padding: clamp(5px, 2vw, 15px) 0; /* Min: 5px, Default: 2vw, Max: 15px */
-}
-.logo img {
-    height: clamp(30px, 8vw, 50px); /* Adapts to viewport width */
-}
- 
-
- 
-
-
-
-
-
-
-@media (max-width: 480px) {
-    header .container {
-      padding: 3px 0 !important; /* আরও কম প্যাডিং */
-    }
-    
-    .logo img {
-      height: 25px !important; /* আরও ছোট লোগো */
-      margin-right: 5px !important;
-    }
-    
-    .logo h1 {
-      font-size: 0.9rem !important; /* আরও ছোট টেক্সট */
-      display: none; /* সম্পূর্ণ লুকানো যেতে পারে যদি জায়গা কম থাকে */
-    }
-    
-    nav ul li {
-      margin-left: 8px !important; /* মেনু আইটেমগুলির মধ্যে কম স্পেস */
-    }
-    
-    nav ul li a {
-      font-size: 0.8rem !important; /* মেনু লিংকের ফন্ট ছোট */
-    }
-    
-    .cart-icon {
-      font-size: 1rem !important; /* কার্ট আইকন ছোট */
-    }
-  }
-
-
-
-
-
-
-
-
 
 /*
-@media (max-width: 768px) {
+  header {
+    background-color: rgba(234, 14, 175, 0.451) !important;
+  }
+
+  header .container {
+    padding: clamp(5px, 2vw, 15px) 0;
+  }
+
+  .logo img {
+    height: clamp(30px, 8vw, 50px);
+  }
+
+  @media (max-width: 768px) {
     header {
       height: auto !important;
       min-height: unset !important;
     }
-    
+
     header .container {
       padding: 5px 0 !important;
     }
-    
+
     .logo img {
       height: 30px !important;
       margin-right: 8px !important;
     }
-    
+
     .logo h1 {
       font-size: 1rem !important;
     }
-    
+
     nav ul li {
       margin-left: 10px !important;
     }
-  }     
-    
+  }
+*/
 
 /* Hero Section */
 .hero {
@@ -1017,3 +974,171 @@ footer {
 
 
 
+
+
+
+
+/* Header Styles */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.logo h1 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Desktop Navigation */
+.desktop-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.desktop-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.desktop-nav a:hover {
+    color: #ff6b6b;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.hamburger-menu .bar {
+    height: 2px;
+    width: 100%;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    display: none;
+    background-color: #fff;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-nav a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+/* Cart Icon */
+.cart-icon {
+    position: relative;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff6b6b;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Active State for Mobile Menu */
+.mobile-nav.active {
+    display: block;
+}
+
+/* Transform hamburger to X when active */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .desktop-nav {
+        display: none;
+    }
+    
+    .logo h1 {
+        font-size: 1rem;
+    }
+    
+    .logo img {
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo h1 {
+        display: none;
+    }
+    
+    header .container {
+        padding: 8px 15px;
+    }
+}
