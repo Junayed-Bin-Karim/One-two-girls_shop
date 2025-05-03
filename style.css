@@ -168,6 +168,44 @@ header .container {
 
 
 
+
+@media (max-width: 480px) {
+    header .container {
+      padding: 3px 0 !important; /* আরও কম প্যাডিং */
+    }
+    
+    .logo img {
+      height: 25px !important; /* আরও ছোট লোগো */
+      margin-right: 5px !important;
+    }
+    
+    .logo h1 {
+      font-size: 0.9rem !important; /* আরও ছোট টেক্সট */
+      display: none; /* সম্পূর্ণ লুকানো যেতে পারে যদি জায়গা কম থাকে */
+    }
+    
+    nav ul li {
+      margin-left: 8px !important; /* মেনু আইটেমগুলির মধ্যে কম স্পেস */
+    }
+    
+    nav ul li a {
+      font-size: 0.8rem !important; /* মেনু লিংকের ফন্ট ছোট */
+    }
+    
+    .cart-icon {
+      font-size: 1rem !important; /* কার্ট আইকন ছোট */
+    }
+  }
+
+
+
+
+
+
+
+
+
+/*
 @media (max-width: 768px) {
     header {
       height: auto !important;
@@ -190,7 +228,8 @@ header .container {
     nav ul li {
       margin-left: 10px !important;
     }
-  }
+  }     
+    
 
 /* Hero Section */
 .hero {
