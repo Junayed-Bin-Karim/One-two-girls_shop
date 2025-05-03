@@ -11,18 +11,18 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 2,
-            title: "Designer Handbag",
-            category: "Handbag",
+            title: "Ear Rings",
+            category: "Jewelry",
             price: 500,
-            image: "images/Products/Accessories/handbag1.jpeg",
+            image: "images/Products/Jewelry/earrings1.jpeg",
             description: "Stylish handbag with multiple compartments and durable material."
         },
         {
             id: 3,
-            title: "Custom Name Necklace",
+            title: "Handbag",
             category: "custom",
-            price: 500,
-            image: "images/Products/Accessories/earrings1.jpeg",
+            price: 450,
+            image: "images/Products/Handbag/handbag1.jpeg",
             description: "Personalized necklace with your name in elegant script."
         },
         {
@@ -60,10 +60,10 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 8,
-            title: "Embroidered Skirt",
-            category: "clothing",
-            price: 1600,
-            image: "images/product8.jpg",
+            title: "Bracelet",
+            category: "Jewelry",
+            price: 350,
+            image: "images/products/Jewelry/bracelet.jpeg",
             description: "Hand-embroidered skirt with traditional designs."
         }
     ];
