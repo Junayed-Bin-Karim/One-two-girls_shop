@@ -3,17 +3,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const products = [
         {
             id: 1,
-            title: "Floral Summer Dress",
-            category: "clothing",
-            price: 1200,
-            image: "images/Products/Clothing/florasummerdress1.jpeg",
+            title: "Handbag",
+            category: "Handbag",
+            price: 350,
+            image: "images/Products/Handbag/bag2.jpeg",
             description: "Beautiful floral print summer dress with comfortable fit."
         },
         {
             id: 2,
             title: "Designer Handbag",
-            category: "accessories",
-            price: 1000,
+            category: "Handbag",
+            price: 500,
             image: "images/Products/Accessories/handbag1.jpeg",
             description: "Stylish handbag with multiple compartments and durable material."
         },
@@ -27,34 +27,35 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 4,
-            title: "Denim Jacket",
-            category: "clothing",
-            price: 2000,
-            image: "images/product4.jpg",
+            title: "Handbag",
+            category: "Handbag",
+            price: 400,
+            image: "images/products/Handbag/bag3.jpeg",
             description: "Classic denim jacket with modern fit and comfortable wear."
         },
         {
             id: 5,
-            title: "Pearl Earrings",
-            category: "accessories",
-            price: 800,
-            image:  "images/Products/Accessories/earrings1.jpeg",
+            title: "Handbag",
+            category: "Handbag",
+    
+            price: 600,
+            image:  "images/Products/Handbag/bag4.jpeg",
             description: "Elegant pearl earrings perfect for any occasion."
         },
         {
             id: 6,
-            title: "Custom Printed T-Shirt",
+            title: "Handbag",
             category: "custom",
             price: 900,
-            image: "images/product6.jpg",
+            image: "images/products/Handbag/bag5.jpeg",
             description: "T-shirt with your custom design or text printed on it."
         },
         {
             id: 7,
-            title: "Silk Scarf",
-            category: "accessories",
+            title: "Design Handbag",
+            category: "Handbag",
             price: 750,
-            image: "images/product7.jpg",
+            image: "images/products/Handbag/bag6.jpeg",
             description: "Luxurious silk scarf with vibrant patterns."
         },
         {
