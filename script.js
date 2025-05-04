@@ -790,105 +790,92 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
-
-
-
-
-
-
     
-    document.addEventListener('DOMContentLoaded', function () {
-        const reviewForm = document.getElementById('reviewForm');
-        const slider = document.querySelector('.review-slider');
-        const stars = document.querySelectorAll('.rating-stars i');
-        const ratingInput = document.getElementById('reviewRating');
+    // Review form submission
+    const reviewForm = document.getElementById('reviewForm');
     
-        reviewForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-    
-            const name = document.getElementById('reviewerName').value;
-            const email = document.getElementById('reviewerEmail').value;
-            const content = document.getElementById('reviewContent').value;
-            const rating = parseInt(ratingInput.value);
-    
-            if (name && email && content && rating > 0) {
-                createNewReviewCard(name, rating, content);
-                reviewForm.reset();
-                resetStars();
-                alert('Thank you for your review!');
-            } else {
-                alert('Please fill out all fields and provide a rating.');
-            }
-        });
-    
-        stars.forEach(star => {
-            star.addEventListener('click', function () {
-                const rating = this.getAttribute('data-rating');
-                ratingInput.value = rating;
-    
-                stars.forEach(s => {
-                    s.classList.remove('fas');
-                    s.classList.add('far');
-                });
-    
-                for (let i = 0; i < rating; i++) {
-                    stars[i].classList.add('fas');
-                    stars[i].classList.remove('far');
-                }
-            });
-        });
-    
-        function createNewReviewCard(name, rating, content) {
-            const newReview = document.createElement('div');
-            newReview.className = 'review-slide';
-    
-            const today = new Date();
-            const dateStr = today.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-    
-            let starsHtml = '';
-            for (let i = 1; i <= 5; i++) {
-                if (i <= rating) {
-                    starsHtml += '<i class="fas fa-star"></i>';
-                } else {
-                    starsHtml += '<i class="far fa-star"></i>';
-                }
-            }
-    
-            newReview.innerHTML = `
-                <div class="review-card">
-                    <div class="reviewer-info">
-                        <img src="images/Customer Reviews/default-avatar.jpg" alt="${name}" class="reviewer-avatar">
-                        <div class="reviewer-details">
-                            <h4>${name}</h4>
-                            <div class="review-rating">
-                                ${starsHtml}
-                            </div>
-                        </div>
-                    </div>
-                    <p class="review-text">"${content}"</p>
-                    <div class="review-date">${dateStr}</div>
-                </div>
-            `;
-    
-            slider.appendChild(newReview);
-            slider.style.width = `${document.querySelectorAll('.review-slide').length * 100}%`;
-        }
-    
-        function resetStars() {
-            stars.forEach(star => {
-                star.classList.remove('fas');
-                star.classList.add('far');
-            });
-            ratingInput.value = 0;
+    reviewForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const name = document.getElementById('reviewerName').value;
+        const email = document.getElementById('reviewerEmail').value;
+        const content = document.getElementById('reviewContent').value;
+        const rating = document.getElementById('reviewRating').value;
+        
+        // Here you would typically send this data to your server
+        // For demonstration, we'll just create a new review card
+        if (name && email && content && rating > 0) {
+            createNewReviewCard(name, rating, content);
+            reviewForm.reset();
+            resetStars();
+            
+            // Show success message
+            alert('Thank you for your review!');
+        } else {
+            alert('Please fill out all fields and provide a rating.');
         }
     });
     
+    function createNewReviewCard(name, rating, content) {
+        const newReview = document.createElement('div');
+        newReview.className = 'review-slide';
+        
+        const today = new Date();
+        const dateStr = today.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        
+        // Create stars HTML
+        let starsHtml = '';
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 >= 0.5;
+        
+        for (let i = 1; i <= 5; i++) {
+            if (i <= fullStars) {
+                starsHtml += '<i class="fas fa-star"></i>';
+            } else if (i === fullStars + 1 && hasHalfStar) {
+                starsHtml += '<i class="fas fa-star-half-alt"></i>';
+            } else {
+                starsHtml += '<i class="far fa-star"></i>';
+            }
+        }
+        
+        newReview.innerHTML = `
+            <div class="review-card">
+                <div class="reviewer-info">
+                    <img src="images/Customer Reviews/default-avatar.jpg" alt="${name}" class="reviewer-avatar">
+                    <div class="reviewer-details">
+                        <h4>${name}</h4>
+                        <div class="review-rating">
+                            ${starsHtml}
+                        </div>
+                    </div>
+                </div>
+                <p class="review-text">"${content}"</p>
+                <div class="review-date">${dateStr}</div>
+            </div>
+        `;
+        
+        // Add the new review to the slider
+        slider.appendChild(newReview);
+        
+        // Update slide count and width
+        const newSlideCount = document.querySelectorAll('.review-slide').length;
+        slider.style.width = `${newSlideCount * 100}%`;
+    }
+    
+    function resetStars() {
+        stars.forEach(star => {
+            star.classList.remove('active', 'fas');
+            star.classList.add('far');
+        });
+        ratingInput.value = 0;
+    }
+});
+
 
 
 
@@ -975,4 +962,13 @@ checkoutForm.addEventListener('submit', async function(e) {
 
 
 
-                                                                
+
+
+
+
+
+
+
+
+
+
