@@ -28,6 +28,8 @@
                     <li><a href="#customize">Customize</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="#reviews">Customer Reviews</a></li>
+
                 </ul>
             </nav>
             <div class="cart-icon">
@@ -284,7 +286,120 @@
 
 
 
-
+    <!-- Customer Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="reviews-container">
+                <div class="review-slider">
+                    <div class="review-slide">
+                        <div class="review-card">
+                            <div class="reviewer-info">
+                                <img src="images/Customer Reviews/customer1.jpeg" alt="Customer 1" class="reviewer-avatar">
+                                <div class="reviewer-details">
+                                    <h4>Fatima Rahman</h4>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">"I absolutely love my custom bag from One-Two Girls Shop! The quality is amazing and it was made exactly how I wanted. The team was so helpful throughout the process."</p>
+                            <div class="review-date">March 15, 2025</div>
+                        </div>
+                    </div>
+                    <div class="review-slide">
+                        <div class="review-card">
+                            <div class="reviewer-info">
+                                <img src="images/Customer Reviews/customer2.jpeg" alt="Customer 2" class="reviewer-avatar">
+                                <div class="reviewer-details">
+                                    <h4>Ayesha Siddiqua</h4>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">"The jewelry I bought for my daughter's birthday was stunning! The craftsmanship is excellent and it arrived right on time. Will definitely order again!"</p>
+                            <div class="review-date">February 28, 2025</div>
+                        </div>
+                    </div>
+                    <div class="review-slide">
+                        <div class="review-card">
+                            <div class="reviewer-info">
+                                <img src="images/Customer Reviews/customer3.jpeg" alt="Customer 3" class="reviewer-avatar">
+                                <div class="reviewer-details">
+                                    <h4>Nusrat Jahan</h4>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">"Great customer service and beautiful products. I had a minor issue with my order and they resolved it immediately. Highly recommend this shop!"</p>
+                            <div class="review-date">January 10, 2025</div>
+                        </div>
+                    </div>
+                    <div class="review-slide">
+                        <div class="review-card">
+                            <div class="reviewer-info">
+                                <img src="images/Customer Reviews/customer4.jpeg" alt="Customer 4" class="reviewer-avatar">
+                                <div class="reviewer-details">
+                                    <h4>Tasnim Ahmed</h4>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">"The customization options are fantastic! I got a unique bag that no one else has. The quality exceeded my expectations. Worth every penny!"</p>
+                            <div class="review-date">December 5, 2024</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="add-review">
+                <h3>Share Your Experience</h3>
+                <form id="reviewForm">
+                    <div class="form-group">
+                        <input type="text" id="reviewerName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="reviewerEmail" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="reviewContent" rows="4" placeholder="Your Review" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewRating">Rating:</label>
+                        <div class="rating-stars">
+                            <i class="far fa-star" data-rating="1"></i>
+                            <i class="far fa-star" data-rating="2"></i>
+                            <i class="far fa-star" data-rating="3"></i>
+                            <i class="far fa-star" data-rating="4"></i>
+                            <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                        <input type="hidden" id="reviewRating" value="0" required>
+                    </div>
+                    <button type="submit" class="btn">Submit Review</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -328,9 +443,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 One-Two Girls Shop. All Rights Reserved ||
-                    Develop By Junayed_Bin_Karim
-                </p>
+                <p>&copy; 2025 One-Two Girls Shop. All Rights Reserved. Developed by Md. Junayed Bin Karim</p>
+
             </div>
         </div>
     </footer>

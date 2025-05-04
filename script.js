@@ -643,6 +643,263 @@ function handleSwipe() {
 
 
 
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Review Slider Functionality
+    const slider = document.querySelector('.review-slider');
+    const slides = document.querySelectorAll('.review-slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const slideCount = slides.length;
+    let currentIndex = 0;
+    let autoSlideInterval;
+    const slideWidth = 100 / slideCount;
+    
+    // Set initial position
+    updateSliderPosition();
+    
+    // Navigation buttons
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideCount - 1;
+        updateSliderPosition();
+        resetAutoSlide();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
+        updateSliderPosition();
+        resetAutoSlide();
+    });
+    
+    // Update slider position
+    function updateSliderPosition() {
+        const offset = -currentIndex * 100;
+        slider.style.transform = `translateX(${offset}%)`;
+        
+        // Update active slide indicator if you have one
+    }
+    
+    // Auto slide functionality
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
+            updateSliderPosition();
+        }, 5000); // Change slide every 5 seconds
+    }
+    
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+    }
+    
+    // Start auto slide on page load
+    startAutoSlide();
+    
+    // Pause auto slide when hovering over slider
+    slider.addEventListener('mouseenter', () => {
+        clearInterval(autoSlideInterval);
+    });
+    
+    slider.addEventListener('mouseleave', () => {
+        startAutoSlide();
+    });
+    
+    // Touch events for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        clearInterval(autoSlideInterval);
+    }, {passive: true});
+    
+    slider.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        startAutoSlide();
+    }, {passive: true});
+    
+    function handleSwipe() {
+        const difference = touchStartX - touchEndX;
+        if (difference > 50) {
+            // Swipe left - next slide
+            currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
+        } else if (difference < -50) {
+            // Swipe right - previous slide
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideCount - 1;
+        }
+        updateSliderPosition();
+    }
+    
+    // Star rating functionality for review form
+    const stars = document.querySelectorAll('.rating-stars i');
+    const ratingInput = document.getElementById('reviewRating');
+    
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            const rating = parseInt(star.getAttribute('data-rating'));
+            ratingInput.value = rating;
+            
+            stars.forEach((s, index) => {
+                if (index < rating) {
+                    s.classList.add('active');
+                    s.classList.remove('far');
+                    s.classList.add('fas');
+                } else {
+                    s.classList.remove('active');
+                    s.classList.remove('fas');
+                    s.classList.add('far');
+                }
+            });
+        });
+        
+        star.addEventListener('mouseover', () => {
+            const rating = parseInt(star.getAttribute('data-rating'));
+            
+            stars.forEach((s, index) => {
+                if (index < rating) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
+            });
+        });
+        
+        star.addEventListener('mouseout', () => {
+            const currentRating = parseInt(ratingInput.value);
+            
+            stars.forEach((s, index) => {
+                if (index < currentRating) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
+            });
+        });
+    });
+    
+    // Review form submission
+    const reviewForm = document.getElementById('reviewForm');
+    
+    reviewForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const name = document.getElementById('reviewerName').value;
+        const email = document.getElementById('reviewerEmail').value;
+        const content = document.getElementById('reviewContent').value;
+        const rating = document.getElementById('reviewRating').value;
+        
+        // Here you would typically send this data to your server
+        // For demonstration, we'll just create a new review card
+        if (name && email && content && rating > 0) {
+            createNewReviewCard(name, rating, content);
+            reviewForm.reset();
+            resetStars();
+            
+            // Show success message
+            alert('Thank you for your review!');
+        } else {
+            alert('Please fill out all fields and provide a rating.');
+        }
+    });
+    
+    function createNewReviewCard(name, rating, content) {
+        const newReview = document.createElement('div');
+        newReview.className = 'review-slide';
+        
+        const today = new Date();
+        const dateStr = today.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        
+        // Create stars HTML
+        let starsHtml = '';
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 >= 0.5;
+        
+        for (let i = 1; i <= 5; i++) {
+            if (i <= fullStars) {
+                starsHtml += '<i class="fas fa-star"></i>';
+            } else if (i === fullStars + 1 && hasHalfStar) {
+                starsHtml += '<i class="fas fa-star-half-alt"></i>';
+            } else {
+                starsHtml += '<i class="far fa-star"></i>';
+            }
+        }
+        
+        newReview.innerHTML = `
+            <div class="review-card">
+                <div class="reviewer-info">
+                    <img src="images/Customer Reviews/default-avatar.jpg" alt="${name}" class="reviewer-avatar">
+                    <div class="reviewer-details">
+                        <h4>${name}</h4>
+                        <div class="review-rating">
+                            ${starsHtml}
+                        </div>
+                    </div>
+                </div>
+                <p class="review-text">"${content}"</p>
+                <div class="review-date">${dateStr}</div>
+            </div>
+        `;
+        
+        // Add the new review to the slider
+        slider.appendChild(newReview);
+        
+        // Update slide count and width
+        const newSlideCount = document.querySelectorAll('.review-slide').length;
+        slider.style.width = `${newSlideCount * 100}%`;
+    }
+    
+    function resetStars() {
+        stars.forEach(star => {
+            star.classList.remove('active', 'fas');
+            star.classList.add('far');
+        });
+        ratingInput.value = 0;
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 checkoutForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     
@@ -694,6 +951,18 @@ checkoutForm.addEventListener('submit', async function(e) {
                       .setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
