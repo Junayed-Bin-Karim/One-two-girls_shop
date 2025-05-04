@@ -1293,3 +1293,19 @@ footer {
     margin-bottom: 4px;
     color: #555;
 }
+
+
+
+
+
+
+.payment-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 12px 16px;
+    border: 1px solid #ffeeba;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
