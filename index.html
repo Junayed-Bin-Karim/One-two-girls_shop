@@ -246,6 +246,19 @@
                         <label for="deliveryAddress">Delivery Address</label>
                         <textarea id="deliveryAddress" rows="3" required></textarea>
                     </div>
+
+
+
+
+                    <!-- Inside the checkout modal, after payment method -->
+                       <div class="delivery-notification">
+                     <p><i class="fas fa-truck"></i> Delivery Charges:</p>
+                       <ul>
+                      <li>Within Dinajpur = 60 Taka </li>
+                       <li>Outside Dinajpur = 130 Taka </li>
+                      </ul>
+                          </div> 
+
                     <div class="form-group">
                         <label for="paymentMethod">Payment Method</label>
                         <select id="paymentMethod" required>
@@ -254,7 +267,12 @@
                             <option value="bkash">bKash</option>
                             <option value="nagad">Nagad</option>
                             <option value="rocket">Rocket</option>
+                            <option value="upay">Upay</option>
+                            <option value="surecash">SureCash</option>
+                            <option value="bank">Bank Transfer</option>
+                            <option value="card">Credit/Debit Card (Local)</option>
                         </select>
+                        
                     </div>
                     <div class="form-group payment-details" id="mobilePaymentDetails" style="display: none;">
                         <label for="mobileAccount">Mobile Account Number</label>
@@ -262,6 +280,9 @@
                         <label for="transactionId">Transaction ID</label>
                         <input type="text" id="transactionId">
                     </div>
+
+
+                    
                     <div class="order-summary">
                         <h4>Order Summary</h4>
                         <div id="checkoutOrderSummary">

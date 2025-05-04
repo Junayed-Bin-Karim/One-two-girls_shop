@@ -893,6 +893,68 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+// Update the delivery charge calculation function
+function calculateDelivery() {
+    const deliveryAddress = document.getElementById('deliveryAddress').value.toLowerCase();
+    let deliveryCharge = 0;
+    
+    if (deliveryAddress.includes('dinajpur')) {
+        deliveryCharge = 60;
+        showDeliveryNotification("Dinajpur delivery: 60 Taka");
+    } else if (deliveryAddress.trim() !== '') {
+        deliveryCharge = 130;
+        showDeliveryNotification("Outside Dinajpur delivery: 130 Taka");
+    } else {
+        hideDeliveryNotification();
+    }
+    
+    document.getElementById('deliveryCharge').textContent = `৳${deliveryCharge.toFixed(2)}`;
+    return deliveryCharge;
+}
+
+// Add these new functions for the notification
+function showDeliveryNotification(message) {
+    const notification = document.querySelector('.delivery-notification');
+    if (notification) {
+        notification.style.display = 'block';
+        // You can update the message here if needed
+    }
+}
+
+function hideDeliveryNotification() {
+    const notification = document.querySelector('.delivery-notification');
+    if (notification) {
+        notification.style.display = 'none';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+// Update your checkout button event listener
+document.getElementById('checkoutBtn').addEventListener('click', function() {
+    // Show the checkout modal
+    document.getElementById('checkoutModal').style.display = 'block';
+    
+    // Show the delivery notification by default
+    showDeliveryNotification();
+    updateCheckoutTotal();
+});
+
+
+
+
+
+
+
+
+
 
 
 
