@@ -965,36 +965,39 @@ document.getElementById('checkoutBtn').addEventListener('click', function() {
 
 
 
-
-
+ 
 checkoutForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     
+    // Show loading state
+    const submitBtn = checkoutForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Processing...';
+    
     const orderData = {
         customer: {
-            name: document.getElementById('fullName').value,
-            phone: document.getElementById('checkoutPhone').value,
-            email: document.getElementById('checkoutEmail').value,
-            address: document.getElementById('deliveryAddress').value
+            name: document.getElementById('fullName').value.trim(),
+            phone: document.getElementById('checkoutPhone').value.trim(),
+            email: document.getElementById('checkoutEmail').value.trim(),
+            address: document.getElementById('deliveryAddress').value.trim()
         },
         payment: {
             method: paymentMethod.value,
-            account: document.getElementById('mobileAccount')?.value || null,
-            transactionId: document.getElementById('transactionId')?.value || null
+            account: document.getElementById('mobileAccount')?.value.trim() || null,
+            transactionId: document.getElementById('transactionId')?.value.trim() || null
         },
         items: cart,
         total: cart.reduce((total, item) => total + (item.price * item.quantity), 0)
     };
     
     try {
-        await fetch('https://script.google.com/macros/s/AKfycbwB3qs9xz4cCmYZFk3N9MRGOBtvOTr9kku098yiZ-Yk99AHqZlujniAEhuN6gFs5iB-EA/exec', {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbwB3qs9xz4cCmYZFk3N9MRGOBtvOTr9kku098yiZ-Yk99AHqZlujniAEhuN6gFs5iB-EA/exec', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(orderData)
-          });
-          
+        });
         
         const result = await response.json();
         
@@ -1006,22 +1009,16 @@ checkoutForm.addEventListener('submit', async function(e) {
             checkoutForm.reset();
             mobilePaymentDetails.style.display = 'none';
         } else {
-            alert('Error: ' + result.message);
+            alert('Error: ' + (result.message || 'Failed to save order'));
         }
     } catch (error) {
         console.error('Error:', error);
         alert('Failed to save order. Please try again or contact us.');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Place Order';
     }
-
-    return ContentService.createTextOutput(JSON.stringify({ success: true }))
-                      .setMimeType(ContentService.MimeType.JSON)
-                      .setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins
-
 });
-
-
-
-
 
 
 
